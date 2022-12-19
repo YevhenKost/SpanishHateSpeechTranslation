@@ -24,10 +24,10 @@ class FoldDataLoader:
     def load_train_eval_dfs(cls, fold_dir_path: str, prefix: str) -> Dict[str, pd.DataFrame]:
 
         train_json_df = json.load(open(
-            os.path.join(fold_dir_path, "train.json", "r")
+            os.path.join(fold_dir_path, "train.json")
         ))
         test_json_df = json.load(open(
-            os.path.join(fold_dir_path, "test.json", "r")
+            os.path.join(fold_dir_path, "test.json")
         ))
 
         train_df = cls.format_fold_data(json_df=train_json_df, prefix=prefix, explode_label=True)
