@@ -5,7 +5,7 @@ from data_loading import FoldDataLoader
 import os
 from metrics_utils import calculate_metrics
 
-from confs.t5_small_conf import PREFIX, load_model_args, MODEL_TYPE, MODEL_NAME
+from config.t5_small_config import PREFIX, load_model_args, MODEL_TYPE, MODEL_NAME
 
 from typing import Dict, Any
 import argparse
