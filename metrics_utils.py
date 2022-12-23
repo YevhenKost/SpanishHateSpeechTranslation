@@ -25,10 +25,10 @@ def calculate_metrics(predicted_texts: List[str], references: List[List[str]]) -
     corpus_bleu_score = bleu.corpus_bleu(references, predicted_tokenized_texts)
 
     two_grams_sentence_bleu_scores = [
-        bleu.sentence_bleu(reference, candidate, 2) for reference, candidate in zip(references_tokenized, predicted_tokenized_texts)
+        bleu.sentence_bleu(reference, candidate, (0,1,0)) for reference, candidate in zip(references_tokenized, predicted_tokenized_texts)
     ]
     three_grams_sentence_bleu_scores = [
-        bleu.sentence_bleu(reference, candidate, 3) for reference, candidate in
+        bleu.sentence_bleu(reference, candidate, (0,0,1)) for reference, candidate in
         zip(references_tokenized, predicted_tokenized_texts)
     ]
 
