@@ -2,11 +2,10 @@ from simpletransformers.seq2seq import Seq2SeqModel, Seq2SeqArgs
 
 
 PREFIX = "paraphrase"
-# MODEL_TYPE = "t5"
-encoder__decoder_type="bart"
-encoder_decoder_name="facebook/bart-large",
-use_cuda=True,
-MODEL_NAME = "mbart"
+MODEL_TYPE = "mbart"
+# encoder_decoder_type="mbart"
+encoder_decoder_name="facebook/bart-large"
+MODEL_NAME = "facebook/mbart-large-50-many-to-many-mmt"
 
 SEED = 2888
 
@@ -16,8 +15,8 @@ MAX_SEQ_LEN = 128
 OPTIMIZER = "AdamW"
 LR = 1e-5
 
-TRAIN_BATCH_SIZE = 32
-EVAL_BATCH_SIZE = 64
+TRAIN_BATCH_SIZE = 16
+EVAL_BATCH_SIZE = 16
 
 
 def load_model_args() -> Seq2SeqArgs:

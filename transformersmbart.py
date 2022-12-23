@@ -25,7 +25,7 @@ def train_folds(args: argparse.Namespace) -> Dict[str, float]:
         model_args = load_model_args()
         model_args.output_dir = fold_save_dir
 
-        model = Seq2SeqModel(encoder_decoder_type, encoder_decoder_name, args=model_args,use_cuda=True,)
+        model = Seq2SeqModel(MODEL_TYPE, MODEL_NAME,args=model_args,encoder_decoder_type='mbart', encoder_decoder_name='facebook/mbart-large-50', use_cuda=True,)
 
         model.train_model(data_loaded_dict["train_df"], eval_data=data_loaded_dict["eval_df"])
 
