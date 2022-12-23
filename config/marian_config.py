@@ -2,7 +2,7 @@ from simpletransformers.seq2seq import Seq2SeqModel, Seq2SeqArgs
 
 
 PREFIX = "paraphrase"
-# MODEL_TYPE = "t5"
+MODEL_TYPE = "marian"
 encoder__decoder_type="marian"
 encoder_decoder_name="Helsinki-NLP/opus-mt-en-es",
 use_cuda=True,

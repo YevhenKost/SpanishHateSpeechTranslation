@@ -5,7 +5,7 @@ from data_loading import FoldDataLoader
 import os
 from metrics_utils import calculate_metrics
 
-from config.mbart_config import PREFIX, load_model_args, MODEL_TYPE, MODEL_NAME
+from config.marian_config import PREFIX, load_model_args, MODEL_TYPE, MODEL_NAME
 
 from typing import Dict, Any
 import argparse
@@ -25,7 +25,7 @@ def train_folds(args: argparse.Namespace) -> Dict[str, float]:
         model_args = load_model_args()
         model_args.output_dir = fold_save_dir
 
-        model = Seq2SeqModel(encoder_decoder_type, encoder_decoder_name, args=model_args,use_cuda=True,)
+        model = Seq2SeqModel(MODEL_TYPE, MODEL_NAME, args=model_args, encoder_decoder_type='marian', encoder_decoder_name='zainnaved/marian-finetuned-kde4-en-to-es', use_cuda=True,)
 
         model.train_model(data_loaded_dict["train_df"], eval_data=data_loaded_dict["eval_df"])
 
