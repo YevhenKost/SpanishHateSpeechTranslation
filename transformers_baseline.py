@@ -29,8 +29,8 @@ def train_folds(args: argparse.Namespace) -> Dict[str, float]:
 
         model.train_model(data_loaded_dict["train_df"], eval_data=data_loaded_dict["eval_df"])
 
-        train_loss = model.eval_model(data_loaded_dict["eval_df"])["eval_loss"]
-        eval_loss = model.eval_model(data_loaded_dict["train_df"])["eval_loss"]
+        train_loss = model.eval_model(data_loaded_dict["train_df"])["eval_loss"]
+        eval_loss = model.eval_model(data_loaded_dict["eval_df"])["eval_loss"]
 
         preds = model.predict(data_loaded_dict["eval_df"]["input_text"].values.tolist())
 
