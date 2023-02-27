@@ -32,10 +32,11 @@ class FoldDataLoader:
 
         train_df = cls.format_fold_data(json_df=train_json_df, prefix=prefix, explode_label=True)
         test_df = cls.format_fold_data(json_df=test_json_df, prefix=prefix, explode_label=False)
+        test_df_exploded = cls.format_fold_data(json_df=test_json_df, prefix=prefix, explode_label=True)
+
 
         return {
             "train_df": train_df,
-            "eval_df": test_df
+            "eval_df": test_df_exploded,
+            "eval_df_refs": test_df
         }
-
-

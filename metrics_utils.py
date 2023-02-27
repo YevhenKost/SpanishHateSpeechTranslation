@@ -46,8 +46,3 @@ def calculate_metrics(predicted_texts: List[str], references: List[List[str]]) -
         "mean_three_grams_sentence_bleu_scores": np.mean(three_grams_sentence_bleu_scores).item(),
         "var_three_grams_sentence_bleu_scores": np.var(three_grams_sentence_bleu_scores).item(),
     }
-
-
-
-
-
