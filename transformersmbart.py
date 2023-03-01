@@ -30,8 +30,8 @@ def train_folds(args: argparse.Namespace) -> None:
             model_args = load_model_args()
             model_args.output_dir = fold_save_dir
 
-            model = Seq2SeqModel(MODEL_TYPE, MODEL_NAME, args=model_args, encoder_decoder_type='marian',
-                                 encoder_decoder_name='zainnaved/marian-finetuned-kde4-en-to-es', use_cuda=True, )
+            model = Seq2SeqModel(MODEL_TYPE, MODEL_NAME, args=model_args,
+                                 encoder_decoder_type='bart', encoder_decoder_name='facebook/bart-large', use_cuda=args.use_cuda)
 
             model.train_model(data_loaded_dict["train_df"], eval_data=data_loaded_dict["eval_df"])
 
@@ -61,6 +61,9 @@ if __name__ == '__main__':
                         help='path to dir, which contains directories with folds data (e.g. DataSplits -> Fold0, Fold1, ...), Fold0 -> train.json, test.json' )
     parser.add_argument('--save_dir', type=str, default="t5-baseline",
                         help="dir to save results")
+    parser.add_argument('--use_cuda', type=bool, default=True,
+                        help="whether to train on GPU")
+
 
     args = parser.parse_args()
     train_folds(args)

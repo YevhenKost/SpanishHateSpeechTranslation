@@ -32,7 +32,7 @@ def train_folds(args: argparse.Namespace) -> None:
 
           model = T5Model(MODEL_TYPE, MODEL_NAME, args=model_args)
 
-          model.train_model(data_loaded_dict["train_df"], eval_data=data_loaded_dict["eval_df"], use_cuda=True)
+          model.train_model(data_loaded_dict["train_df"], eval_data=data_loaded_dict["eval_df"], use_cuda=args.use_cuda)
 
           train_loss = model.eval_model(data_loaded_dict["train_df"])["eval_loss"]
           eval_loss = model.eval_model(data_loaded_dict["eval_df"])["eval_loss"]
@@ -62,6 +62,8 @@ if __name__ == '__main__':
                         help='path to dir, which contains directories with folds data (e.g. DataSplits -> Fold0, Fold1, ...), Fold0 -> train.json, test.json' )
     parser.add_argument('--save_dir', type=str, default="t5-baseline",
                         help="dir to save results")
+    parser.add_argument('--use_cuda', type=bool, default=True,
+                        help="whether to train on GPU")
 
     args = parser.parse_args()
     train_folds(args)
